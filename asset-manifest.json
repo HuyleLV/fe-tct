@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/fe-tct/static/css/main.e6c13ad2.css",
+    "main.js": "/fe-tct/static/js/main.7a710ee1.js",
+    "static/media/video-demo.mp4": "/fe-tct/static/media/video-demo.85ef6768ec7393715a87.mp4",
+    "static/media/people.jpg": "/fe-tct/static/media/people.7a25707c43811026e640.jpg",
+    "static/media/bietthu.jpg": "/fe-tct/static/media/bietthu.9c383bec047ab19a066d.jpg",
+    "static/media/bietthumot.jpg": "/fe-tct/static/media/bietthumot.1491c12f823b927ee683.jpg",
+    "static/media/whatapp.png": "/fe-tct/static/media/whatapp.c664b8daf06be1bdf3b9.png",
+    "static/media/staircase.png": "/fe-tct/static/media/staircase.686f347ec3da696444c8.png",
+    "static/media/deleteIcon.png": "/fe-tct/static/media/deleteIcon.acb4320717139484e61c.png",
+    "index.html": "/fe-tct/index.html",
+    "main.e6c13ad2.css.map": "/fe-tct/static/css/main.e6c13ad2.css.map",
+    "main.7a710ee1.js.map": "/fe-tct/static/js/main.7a710ee1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.7a710ee1.js"
+  ]
+}
