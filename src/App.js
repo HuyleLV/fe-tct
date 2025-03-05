@@ -130,34 +130,43 @@ const App = () => {
         <div className="absolute top-0 px-[5%] text-white w-full fixed-top">
           <div className="flex justify-between items-center pt-10">
             {isMobile ? (
-              <h2 className={`text-xl font-bold fall-animation`}>
-                Tôi là TRƯƠNG CÔNG TRÌNH
-              </h2>
+              <div>
+                <h2 className={`text-xl font-bold fall-animation`}>
+                  Tôi là TRƯƠNG CÔNG TRÌNH
+                </h2>
+                <h3 className={`text-lg font-bold fall-animation pt-2`}>DESIGN & VISUALIZATION</h3>
+              </div>
             ):(
-              <h2 className={`text-4xl font-bold fall-animation`}>
-                Tôi là TRƯƠNG CÔNG TRÌNH
-              </h2>
+              <div>
+                <h2 className={`text-4xl font-bold fall-animation`}>
+                  Tôi là TRƯƠNG CÔNG TRÌNH
+                </h2>
+                <h3 className={`text-2xl font-bold fall-animation pt-2`}>DESIGN & VISUALIZATION</h3>
+              </div>
             )}
-            <div
-              className="relative"
-              onMouseEnter={() => setShowOptions(true)}
-              onMouseLeave={() => setShowOptions(false)}
-            >
-              <button className="text-xl font-bold bg-yellow-500 text-white px-8 py-2 rounded">
-                Contact
-              </button>
-              {showOptions && (
-                <div className="absolute top-10 right-0 bg-white text-black shadow-lg w-full rounded-b">
-                  <Link to="https://wa.me/your-whatsapp-number" className="flex items-center justify-center p-2 font-semibold border-b border-gray-200">
-                    <img src={whatapp} className="w-4 h-4 mr-2" alt="WhatsApp" />
-                    WhatsApp
-                  </Link>
-                  <Link to="mailto:your-email@gmail.com" className="flex items-center justify-center p-2 font-semibold border-b border-gray-200">
-                    <img src={gmail} className="w-4 h-4 mr-2" alt="Gmail" />
-                    Gmail
-                  </Link>
-                </div>
-              )}
+            <div className="flex items-center">
+              <h3 className={`text-2xl font-bold fall-animation pt-2 pr-5`}>ABOUT US</h3>
+              <div
+                className="relative"
+                onMouseEnter={() => setShowOptions(true)}
+                onMouseLeave={() => setShowOptions(false)}
+              >
+                <button className="text-xl font-bold bg-yellow-500 text-white px-8 py-2 rounded">
+                  Contact
+                </button>
+                {showOptions && (
+                  <div className="absolute top-10 right-0 bg-white text-black shadow-lg w-full rounded-b">
+                    <Link to="https://wa.me/0935304384" className="flex items-center justify-center p-2 font-semibold border-b border-gray-200">
+                      <img src={whatapp} className="w-4 h-4 mr-2" alt="WhatsApp" />
+                      WhatsApp
+                    </Link>
+                    <Link to="mailto:truongcongtrinh.arch@gmail.com" className="flex items-center justify-center p-2 font-semibold border-b border-gray-200">
+                      <img src={gmail} className="w-4 h-4 mr-2" alt="Gmail" />
+                      Gmail
+                    </Link>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
           <p className="font-bold text-6xl pt-[250px] fall-animation">
