@@ -1,14 +1,11 @@
+@font-face {
+  font-family: 'UTM Avo';
+  src: url('../src/asset/UTM\ Avo.ttf') format('truetype'); /* Đảm bảo không sử dụng dấu backslash */
+  font-weight: bold; /* Nếu đây là font bold, thêm thuộc tính này */
+  font-style: normal; /* Thêm thuộc tính này nếu cần */
+}
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'UTM Avo', sans-serif; /* Thêm sans-serif như font dự phòng */
 }

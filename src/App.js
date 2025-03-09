@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import video_home from "../src/asset/video/video-demo.mp4";
 import whatapp from "../src/asset/whatapp.png";
 import gmail from "../src/asset/gmail.png";
@@ -11,19 +11,39 @@ import people from "../src/asset/people.jpg";
 import bietthu from "../src/asset/bietthu.jpg";
 import deleteIcon from "../src/asset/deleteIcon.png";
 import bietthumot from "../src/asset/bietthumot.jpg";
+import next from "../src/asset/next.png";
+import previous from "../src/asset/previous.png";
 import { Link } from "react-router-dom";
 import { useDevice } from "../src/hooks";
 
 const App = () => {
   const { isMobile } = useDevice();
+  const aboutRef = useRef(null);
+  const ourRef = useRef(null);
   const [showOptions, setShowOptions] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [thumbnails, setThumbnails] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleBack = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+      setSelectedImage(thumbnails[currentIndex - 1]);
+    }
+  };
+
+  const handleNext = () => {
+    if (currentIndex < thumbnails.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+      setSelectedImage(thumbnails[currentIndex + 1]);
+    }
+  };
 
   const handleImageClick = (image, thumbnailList) => {
     setSelectedImage(image);
     setThumbnails(thumbnailList);
+    setCurrentIndex(0); // Đặt lại chỉ số hiện tại
     setIsModalOpen(true);
   };
 
@@ -31,10 +51,24 @@ const App = () => {
     setIsModalOpen(false);
     setSelectedImage(null);
     setThumbnails([]);
+    setCurrentIndex(0); // Đặt lại chỉ số khi đóng modal
   };
 
-  const handleThumbnailClick = (image) => {
-    setSelectedImage(image);
+  const handleThumbnailClick = (thumb, index) => {
+    setSelectedImage(thumb);
+    setCurrentIndex(index);
+  };
+
+  const scrollToAbout = () => {
+    if (aboutRef.current) {
+      aboutRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const scrollToOur = () => {
+    if (ourRef.current) {
+      ourRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   useEffect(() => {
@@ -135,18 +169,18 @@ const App = () => {
                 <h2 className={`text-xl font-bold fall-animation`}>
                   Tôi là TRƯƠNG CÔNG TRÌNH
                 </h2>
-                <h3 className={`text-lg font-bold fall-animation pt-2`}>DESIGN & VISUALIZATION</h3>
+                <h3 className={`text-lg fall-animation pt-2`}>DESIGN & VISUALIZATION</h3>
               </div>
-            ):(
+            ) : (
               <div>
                 <h2 className={`text-4xl font-bold fall-animation`}>
                   Tôi là TRƯƠNG CÔNG TRÌNH
                 </h2>
-                <h3 className={`text-2xl font-bold fall-animation pt-2`}>DESIGN & VISUALIZATION</h3>
+                <h3 className={`text-xl fall-animation pt-2`}>DESIGN & VISUALIZATION</h3>
               </div>
             )}
             <div className="flex items-center">
-              <h3 className={`text-2xl font-bold fall-animation pt-2 pr-5`}>ABOUT US</h3>
+              <h3 className={`text-xl fall-animation pt-2 pr-5 cursor-pointer`} onClick={scrollToAbout}>ABOUT US</h3>
               <div
                 className="relative"
                 onMouseEnter={() => setShowOptions(true)}
@@ -170,17 +204,14 @@ const App = () => {
               </div>
             </div>
           </div>
-          <p className="font-bold text-6xl pt-[350px] fall-animation">
+          <p className="font-bold text-6xl pt-[300px] fall-animation">
             <span className="text-[70px] pb-4">SLOGAN</span>
           </p>
           <p className="font-semibold text-xl py-10 fall-animation">Kiến trúc sư</p>
-          <button className="text-xl font-bold bg-yellow-500 text-white px-6 py-2 rounded fall-animation">
-            Our Achievements
-          </button>
         </div>
 
-        <div className="flex justify-center w-full">
-          <div className="absolute w-2/3 h-[160px] bg-white z-10 mt-[-130px] rounded-xl shadow grid grid-cols-5 gap-4 border-2 border-gray-400 items-center text-center px-1">
+        <div className="flex justify-center w-full text-black absolute top-60 px-[5%] mt-[420px]">
+          <div className="absolute w-2/3 h-[160px] bg-white z-10 rounded-xl shadow grid grid-cols-5 gap-4 border-2 border-gray-400 items-center text-center px-1 fall-animation">
             <div className="flex justify-center">
               <div>
                 <div className="flex justify-center">
@@ -222,31 +253,33 @@ const App = () => {
               </div>
             </div>
           </div>
+          <button className="text-xl font-bold bg-yellow-500 text-white px-6 py-2 rounded fall-animation mt-[200px]" onClick={scrollToOur}>
+            Our Achievements
+          </button>
         </div>
       </div>
 
-      <div className="bg-slate-800 text-white">
-        <div className="max-w-screen-2xl mx-auto mt-20 py-20">
-          <p className="text-2xl font-bold mb-5 pb-2 border-b-2 w-[200px] fall-animation">Our Work</p>
+      <div ref={ourRef} className="bg-slate-800 text-white">
+        <div className="max-w-screen-2xl mx-auto py-20">
           <div className={`${isMobile ? 'grid grid-cols-1 px-2' : 'grid grid-cols-2'} gap-4`}>
             {Array(6).fill().map((_, index) => (
               <div className="py-4" key={index}>
                 <div className="flex" onClick={() => handleImageClick(bietthu, [bietthumot, bietthu, bietthu])}>
                   <img
                     src={bietthu}
-                    className={`${isMobile ? 'w-[400px] h-[400px]' : 'w-[500px] h-[500px]'} border cursor-pointer`}
+                    className={`${isMobile ? 'w-[400px] h-[300px]' : 'w-[500px] h-[350px]'} border cursor-pointer`}
                     loading="lazy"
                   />
                   {!isMobile && (
                     <div>
                       <img
                         src={bietthumot}
-                        className="w-[250px] h-[250px] border cursor-pointer"
+                        className="w-[250px] h-[175px] border cursor-pointer"
                         loading="lazy"
                       />
                       <img
                         src={bietthumot}
-                        className="w-[250px] h-[250px] border cursor-pointer"
+                        className="w-[250px] h-[175px] border cursor-pointer"
                         loading="lazy"
                       />
                     </div>
@@ -260,19 +293,19 @@ const App = () => {
         </div>
       </div>
 
-      <div className="max-w-screen-2xl mx-auto px-2">
+      <div ref={aboutRef} className="max-w-screen-2xl mx-auto px-2">
         <div className="py-40 grid grid-cols-2 gap-4">
           <div>
             <p className={`text-2xl font-bold pb-2 border-b-2 ${isMobile ? 'w-[150px]' : 'w-[200px]'} fall-animation`}>About Us?</p>
             <p className={`pt-10 ${isMobile ? 'text-[11px]' : 'text-md'}`}>
-              Hi render est un studio de rendu créatif fondé en 2017 par Sandrine Karlen et Wassim Honeiny <br /> Architecte
-              d’intérieur et Architecte. Aujourdhui nous mettons tous notre savoire faire <br /> dans la visualisation
-              architecturale haut de gamme. 
+              Hi render est un studio de rendu créatif fondé en 2017 par Sandrine Karlen et Wassim Honeiny. 
+              Architecte d’intérieur và Architecte. Aujourdhui chúng tôi đưa tất cả kỹ năng của mình 
+              vào việc hình dung kiến trúc cao cấp. 
             </p>
             <p className={`pt-4 ${isMobile ? 'text-[11px]' : 'text-md'}`}>
-              Hi render est un studio de rendu créatif fondé en 2017 par Sandrine Karlen et Wassim Honeiny <br /> Architecte
-              d’intérieur et Architecte. Aujourdhai nous mettons tous notre savoire faire <br /> dans la visualisation
-              architecturale haut de gamme. 
+              Hi render est un studio de rendu créatif fondé en 2017 par Sandrine Karlen et Wassim Honeiny. 
+              Architecte d’intérieur và Architecte. Aujourdhai chúng tôi đưa tất cả kỹ năng của mình 
+              vào việc hình dung kiến trúc cao cấp. 
             </p>
           </div>
           <div className="flex justify-center">
@@ -281,23 +314,54 @@ const App = () => {
         </div>
       </div>
 
-      <div className={`modal ${isModalOpen ? "open" : ""}`}>
-        <div className="modal-content flex items-start">
-          <div>
-            {selectedImage && <img src={selectedImage} className={isMobile ? 'w-[350px] h-[300px]' : 'w-[800px] h-[750px]'} alt="Selected" />}
+      <div className={`modal ${isModalOpen ? "open" : ""}`} onClick={closeModal}>
+        <div className="modal-content flex items-center justify-between" onClick={(e) => e.stopPropagation()}> 
+          <img
+            className={`text-black font-bold py-2 px-4 rounded ${currentIndex === 0 ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`} 
+            onClick={handleBack}
+            disabled={currentIndex === 0}
+            src={previous} 
+            width={isMobile ? 60 : 100} 
+            height={isMobile ? 60 : 100} 
+            />
+
+          <div className="flex flex-col items-center">
+            {selectedImage && (
+              <img
+                src={selectedImage}
+                className={isMobile ? 'w-[400px] h-[300px]' : 'w-[900px] h-[700px]'}
+                alt="Selected"
+              />
+            )}
             <div className="thumbnails">
               {thumbnails.map((thumb, index) => (
                 <img
                   key={index}
                   src={thumb}
                   alt={`Thumbnail ${index}`}
-                  onClick={() => handleThumbnailClick(thumb)}
+                  onClick={() => handleThumbnailClick(thumb, index)}
                 />
               ))}
             </div>
           </div>
-          <img className="cursor-pointer" src={deleteIcon} width={40} height={40} onClick={closeModal}/>
+          <img
+            className={`text-black font-bold py-2 px-4 rounded ${currentIndex === thumbnails.length - 1 ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`} 
+            onClick={handleNext}
+            disabled={currentIndex === thumbnails.length - 1}
+            src={next} 
+            width={isMobile ? 60 : 100} 
+            height={isMobile ? 60 : 100} 
+            />
         </div>
+        
+        <img
+          className="cursor-pointer absolute top-2 right-2"
+          src={deleteIcon}
+          width={isMobile ? 30 : 50} 
+          height={isMobile ? 30 : 50} 
+          onClick={closeModal}
+          alt="Close"
+        />
       </div>
 
       <footer className="bg-black text-white py-10">
