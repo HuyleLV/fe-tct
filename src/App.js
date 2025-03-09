@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import video_home from "../src/asset/video/video-demo.mp4";
 import whatapp from "../src/asset/whatapp.png";
 import gmail from "../src/asset/gmail.png";
+import cad from "../src/asset/cad.png";
 import film from "../src/asset/3d-film.png";
 import house from "../src/asset/house.png";
 import interior from "../src/asset/interior-design.png";
@@ -151,7 +152,7 @@ const App = () => {
                 onMouseEnter={() => setShowOptions(true)}
                 onMouseLeave={() => setShowOptions(false)}
               >
-                <button className="text-xl font-bold bg-yellow-500 text-white px-8 py-2 rounded">
+                <button className="text-xl font-bold bg-yellow-500 text-white px-6 py-2 rounded">
                   Contact
                 </button>
                 {showOptions && (
@@ -169,14 +170,17 @@ const App = () => {
               </div>
             </div>
           </div>
-          <p className="font-bold text-6xl pt-[250px] fall-animation">
+          <p className="font-bold text-6xl pt-[350px] fall-animation">
             <span className="text-[70px] pb-4">SLOGAN</span>
           </p>
-          <p className="font-semibold text-xl pt-10 fall-animation">Kiến trúc sư</p>
+          <p className="font-semibold text-xl py-10 fall-animation">Kiến trúc sư</p>
+          <button className="text-xl font-bold bg-yellow-500 text-white px-6 py-2 rounded fall-animation">
+            Our Achievements
+          </button>
         </div>
 
         <div className="flex justify-center w-full">
-          <div className="absolute w-2/3 h-[160px] bg-white z-10 mt-[-80px] rounded-xl shadow grid grid-cols-4 gap-4 border-2 border-gray-400 items-center text-center px-1">
+          <div className="absolute w-2/3 h-[160px] bg-white z-10 mt-[-130px] rounded-xl shadow grid grid-cols-5 gap-4 border-2 border-gray-400 items-center text-center px-1">
             <div className="flex justify-center">
               <div>
                 <div className="flex justify-center">
@@ -188,7 +192,7 @@ const App = () => {
             <div className="flex justify-center">
               <div>
                 <div className="flex justify-center">
-                  <img src={interior} className={isMobile ? 'w-[30px] h-[30px]' : 'w-[60px] h-[60px]'} loading="lazy" />
+                  <img src={staircase} className={isMobile ? 'w-[30px] h-[30px]' : 'w-[60px] h-[60px]'} loading="lazy" />
                 </div>
                 <p className={`${isMobile ? 'text-[11px]' : 'text-xl'} font-semibold pt-1`}>Interior Design</p>
               </div>
@@ -196,7 +200,7 @@ const App = () => {
             <div className="flex justify-center">
               <div>
                 <div className="flex justify-center">
-                  <img src={staircase} className={isMobile ? 'w-[30px] h-[30px]' : 'w-[60px] h-[60px]'} loading="lazy" />
+                  <img src={interior} className={isMobile ? 'w-[30px] h-[30px]' : 'w-[60px] h-[60px]'} loading="lazy" />
                 </div>
                 <p className={`${isMobile ? 'text-[11px]' : 'text-xl'} font-semibold pt-1`}>2D - 3D Floor Plan</p>
               </div>
@@ -209,29 +213,18 @@ const App = () => {
                 <p className={`${isMobile ? 'text-[11px]' : 'text-xl'} font-semibold pt-1`}>3D Film & Animation</p>
               </div>
             </div>
+            <div className="flex justify-center">
+              <div>
+                <div className="flex justify-center">
+                  <img src={cad} className={isMobile ? 'w-[30px] h-[30px]' : 'w-[60px] h-[60px]'} loading="lazy" />
+                </div>
+                <p className={`${isMobile ? 'text-[11px]' : 'text-xl'} font-semibold pt-1`}>2D AutoCAD Work</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div className="max-w-screen-2xl mx-auto px-2">
-        <div className="pt-40 grid grid-cols-2 gap-4">
-          <div>
-            <p className={`text-2xl font-bold pb-2 border-b-2 ${isMobile ? 'w-[150px]' : 'w-[200px]'} fall-animation`}>About Us?</p>
-            <p className={`pt-10 ${isMobile ? 'text-[11px]' : 'text-md'}`}>
-              Hi render est un studio de rendu créatif fondé en 2017 par Sandrine Karlen et Wassim Honeiny <br /> Architecte
-              d’intérieur et Architecte. Aujourdhui nous mettons tous notre savoire faire <br /> dans la visualisation
-              architecturale haut de gamme. 
-            </p>
-            <p className={`pt-4 ${isMobile ? 'text-[11px]' : 'text-md'}`}>
-              Hi render est un studio de rendu créatif fondé en 2017 par Sandrine Karlen et Wassim Honeiny <br /> Architecte
-              d’intérieur et Architecte. Aujourdhai nous mettons tous notre savoire faire <br /> dans la visualisation
-              architecturale haut de gamme. 
-            </p>
-          </div>
-          <div className="flex justify-center">
-            <img src={people} className={`${isMobile ? 'w-2/3 h-[200px]' : 'w-2/3 h-[300px]'} rounded-xl`} loading="lazy" />
-          </div>
-        </div>
-      </div>
+
       <div className="bg-slate-800 text-white">
         <div className="max-w-screen-2xl mx-auto mt-20 py-20">
           <p className="text-2xl font-bold mb-5 pb-2 border-b-2 w-[200px] fall-animation">Our Work</p>
@@ -263,6 +256,27 @@ const App = () => {
                 <p className="pt-2 text-xl text-gray-400">Tác Giả: Trương Công Trình</p>
               </div>
             ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-screen-2xl mx-auto px-2">
+        <div className="py-40 grid grid-cols-2 gap-4">
+          <div>
+            <p className={`text-2xl font-bold pb-2 border-b-2 ${isMobile ? 'w-[150px]' : 'w-[200px]'} fall-animation`}>About Us?</p>
+            <p className={`pt-10 ${isMobile ? 'text-[11px]' : 'text-md'}`}>
+              Hi render est un studio de rendu créatif fondé en 2017 par Sandrine Karlen et Wassim Honeiny <br /> Architecte
+              d’intérieur et Architecte. Aujourdhui nous mettons tous notre savoire faire <br /> dans la visualisation
+              architecturale haut de gamme. 
+            </p>
+            <p className={`pt-4 ${isMobile ? 'text-[11px]' : 'text-md'}`}>
+              Hi render est un studio de rendu créatif fondé en 2017 par Sandrine Karlen et Wassim Honeiny <br /> Architecte
+              d’intérieur et Architecte. Aujourdhai nous mettons tous notre savoire faire <br /> dans la visualisation
+              architecturale haut de gamme. 
+            </p>
+          </div>
+          <div className="flex justify-center">
+            <img src={people} className={`${isMobile ? 'w-2/3 h-[200px]' : 'w-2/3 h-[300px]'} rounded-xl`} loading="lazy" />
           </div>
         </div>
       </div>
