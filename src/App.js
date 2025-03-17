@@ -5,6 +5,7 @@ import gmail from "../src/asset/gmail.png";
 import cad from "../src/asset/cad.png";
 import film from "../src/asset/3d-film.png";
 import house from "../src/asset/house.png";
+import logo from "../src/asset/logo.png";
 import interior from "../src/asset/interior-design.png";
 import staircase from "../src/asset/staircase.png";
 import people from "../src/asset/people.jpg";
@@ -162,55 +163,66 @@ const App = () => {
         />
         <div className="absolute top-0 left-0 w-full h-full bg-neutral-600 opacity-50" />
 
-        <div className="absolute top-0 px-[5%] text-white w-full fixed-top">
-          <div className="flex justify-between items-center pt-10">
-            {isMobile ? (
-              <div>
-                <h2 className={`text-xl font-bold fall-animation`}>
-                  Tôi là TRƯƠNG CÔNG TRÌNH
-                </h2>
-                <h3 className={`text-lg fall-animation pt-2`}>DESIGN & VISUALIZATION</h3>
-              </div>
-            ) : (
-              <div>
-                <h2 className={`text-4xl font-bold fall-animation`}>
-                  Tôi là TRƯƠNG CÔNG TRÌNH
-                </h2>
-                <h3 className={`text-xl fall-animation pt-2`}>DESIGN & VISUALIZATION</h3>
-              </div>
-            )}
-            <div className="flex items-center">
-              <h3 className={`text-xl fall-animation pt-2 pr-5 cursor-pointer`} onClick={scrollToAbout}>ABOUT US</h3>
-              <div
-                className="relative"
-                onMouseEnter={() => setShowOptions(true)}
-                onMouseLeave={() => setShowOptions(false)}
-              >
-                <button className="text-xl font-bold bg-yellow-500 text-white px-6 py-2 rounded">
-                  Contact
-                </button>
-                {showOptions && (
-                  <div className="absolute top-10 right-0 bg-white text-black shadow-lg w-full rounded-b">
-                    <Link to="https://wa.me/0935304384" className="flex items-center justify-center p-2 font-semibold border-b border-gray-200">
-                      <img src={whatapp} className="w-4 h-4 mr-2" alt="WhatsApp" />
-                      WhatsApp
-                    </Link>
-                    <Link to="mailto:truongcongtrinh.arch@gmail.com" className="flex items-center justify-center p-2 font-semibold border-b border-gray-200">
-                      <img src={gmail} className="w-4 h-4 mr-2" alt="Gmail" />
-                      Gmail
-                    </Link>
+        <div className="absolute top-0 text-white w-full">
+          <div className="bg-black fixed w-full z-100">
+            <div className="flex justify-between items-center py-2 px-[5%]">
+              {isMobile ? (
+                <div>
+                  <div className="flex items-end">
+                    <img src={logo} width={40} height={40} alt="logo"/>
+                    <p className="text-[12px]">T R T Studio</p>
                   </div>
-                )}
+                  <h3 className={`text-[10px] fall-animation pt-2`}>DESIGN & VISUALIZATION</h3>
+                </div>
+              ) : (
+                <div className="font-bold">
+                  <div className="flex items-end">
+                    <img src={logo} width={60} height={60} alt="logo"/>
+                    <p className="text-[16px]">T R T Studio</p>
+                  </div>
+                  <h3 className={`text-[11px] pt-1`}>DESIGN & VISUALIZATION</h3>
+                </div>
+              )}
+              <div className="flex items-center">
+                <h3 className={`${isMobile ? "text-[14px]" : "text-xl"} fall-animation pt-2 pr-5 cursor-pointer`} onClick={scrollToAbout}>About Us</h3>
+                <div
+                  className="relative"
+                  onMouseEnter={() => setShowOptions(true)}
+                  onMouseLeave={() => setShowOptions(false)}
+                >
+                  <button className={`${isMobile ? "text-[14px]" : "text-xl"} font-bold bg-yellow-500 text-black px-6 py-2 rounded`}>
+                    Contact
+                  </button>
+                  {showOptions && (
+                    <div className="absolute top-10 right-0 bg-white text-black shadow-lg w-full rounded-b">
+                      <Link to="https://wa.me/0935304384" className="flex items-center justify-center p-2 font-semibold border-b border-gray-200">
+                        <img src={whatapp} className="w-4 h-4 mr-2" alt="WhatsApp" />
+                        WhatsApp
+                      </Link>
+                      <Link to="mailto:truongcongtrinh.arch@gmail.com" className="flex items-center justify-center p-2 font-semibold border-b border-gray-200">
+                        <img src={gmail} className="w-4 h-4 mr-2" alt="Gmail" />
+                        Gmail
+                      </Link>
+                    </div>
+                  )}
+                </div>
               </div>
+
             </div>
           </div>
-          <p className="font-bold text-6xl pt-[300px] fall-animation">
-            <span className="text-[70px] pb-4">SLOGAN</span>
-          </p>
-          <p className="font-semibold text-xl py-10 fall-animation">Kiến trúc sư</p>
+          <div className="px-[5%]">
+            <p className="font-bold text-6xl pt-[300px] fall-animation">
+              <span className="text-[40px] pb-4 italic">
+                We provide professional 3D visualization services,<br></br>
+                that showcase the true potential of your real estate,<br></br>
+                ultimately driving sales success.
+              </span>
+            </p>
+            <p className="font-semibold text-xl py-10 fall-animation">Kiến trúc sư</p>
+          </div>
         </div>
 
-        <div className="flex justify-center w-full text-black absolute top-60 px-[5%] mt-[420px]">
+        <div className="flex justify-center w-full text-black absolute top-70 px-[5%] mt-[420px]">
           <div className="absolute w-2/3 h-[160px] bg-white z-10 rounded-xl shadow grid grid-cols-5 gap-4 border-2 border-gray-400 items-center text-center px-1 fall-animation">
             <div className="flex justify-center">
               <div>
@@ -253,7 +265,7 @@ const App = () => {
               </div>
             </div>
           </div>
-          <button className="text-xl font-bold bg-yellow-500 text-white px-6 py-2 rounded fall-animation mt-[200px]" onClick={scrollToOur}>
+          <button className="text-xl font-bold bg-yellow-500 text-black px-5 py-2 rounded fall-animation mt-[180px] cursor-pointer" onClick={scrollToOur}>
             Our Achievements
           </button>
         </div>
@@ -285,8 +297,8 @@ const App = () => {
                     </div>
                   )}
                 </div>
-                <p className="pt-5 text-2xl font-semibold">Biệt Thự Biệt Thự Biệt Thự</p>
-                <p className="pt-2 text-xl text-gray-400">Tác Giả: Trương Công Trình</p>
+                <p className="pt-5 text-2xl font-semibold">Project: Biệt Thự Biệt Thự Biệt Thự</p>
+                <p className="pt-2 text-xl text-gray-400">Ha noi, Viet Nam</p>
               </div>
             ))}
           </div>

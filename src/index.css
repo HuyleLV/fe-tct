@@ -1,11 +1,26 @@
 @font-face {
   font-family: 'UTM Avo';
-  src: url('../src/asset/UTM\ Avo.ttf') format('truetype'); /* Đảm bảo không sử dụng dấu backslash */
-  font-weight: bold; /* Nếu đây là font bold, thêm thuộc tính này */
-  font-style: normal; /* Thêm thuộc tính này nếu cần */
+  src: url('../src/asset/UTM Avo.ttf') format('truetype'); /* Đường dẫn đến font thường */
+  font-weight: normal; /* Font thường */
+  font-style: normal;  /* Kiểu chữ thường */
+}
+
+@font-face {
+  font-family: 'UTM Avo';
+  src: url('../src/asset/UTM AvoBold.ttf') format('truetype'); /* Đường dẫn đến font bold */
+  font-weight: bold; /* Font bold */
+  font-style: normal; /* Kiểu chữ thường */
 }
 
 body {
   margin: 0;
-  font-family: 'UTM Avo', sans-serif; /* Thêm sans-serif như font dự phòng */
+  font-family: 'UTM Avo', sans-serif; /* Font chính */
+}
+
+h1 {
+  font-weight: bold; /* Sử dụng font bold cho tiêu đề */
+}
+
+p {
+  font-weight: normal; /* Sử dụng font thường cho đoạn văn */
 }
