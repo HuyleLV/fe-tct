@@ -130,8 +130,6 @@ const App = () => {
           }
 
           .thumbnails img {
-            width: 80px;
-            height: 80px;
             cursor: pointer;
             margin: 0 5px;
             border: 2px solid transparent;
@@ -170,15 +168,15 @@ const App = () => {
                 <div>
                   <div className="flex items-end">
                     <img src={logo} width={40} height={40} alt="logo"/>
-                    <p className="text-[12px]">T R T Studio</p>
+                    <p className="text-[12px]">T R T - Studio</p>
                   </div>
                   <h3 className={`text-[10px] fall-animation pt-2`}>DESIGN & VISUALIZATION</h3>
                 </div>
               ) : (
-                <div className="font-bold">
+                <div>
                   <div className="flex items-end">
                     <img src={logo} width={60} height={60} alt="logo"/>
-                    <p className="text-[16px]">T R T Studio</p>
+                    <p className="text-xl">T R T - Studio</p>
                   </div>
                   <h3 className={`text-[11px] pt-1`}>DESIGN & VISUALIZATION</h3>
                 </div>
@@ -190,7 +188,7 @@ const App = () => {
                   onMouseEnter={() => setShowOptions(true)}
                   onMouseLeave={() => setShowOptions(false)}
                 >
-                  <button className={`${isMobile ? "text-[14px]" : "text-xl"} font-bold bg-yellow-500 text-black px-6 py-2 rounded`}>
+                  <button className={`${isMobile ? "text-[14px]" : "text-xl"} bg-yellow-500 text-black p-2 rounded`}>
                     Contact
                   </button>
                   {showOptions && (
@@ -218,7 +216,7 @@ const App = () => {
                 ultimately driving sales success.
               </span>
             </p>
-            <p className="font-semibold text-xl py-10 fall-animation">Kiến trúc sư</p>
+            <img className="py-5" src={logo} width={150} height={150} alt="logo"/>
           </div>
         </div>
 
@@ -265,7 +263,7 @@ const App = () => {
               </div>
             </div>
           </div>
-          <button className="text-xl font-bold bg-yellow-500 text-black px-5 py-2 rounded fall-animation mt-[180px] cursor-pointer" onClick={scrollToOur}>
+          <button className="text-xl bg-yellow-500 text-black p-2 rounded fall-animation mt-[180px] cursor-pointer" onClick={scrollToOur}>
             Our Achievements
           </button>
         </div>
@@ -279,19 +277,19 @@ const App = () => {
                 <div className="flex" onClick={() => handleImageClick(bietthu, [bietthumot, bietthu, bietthu])}>
                   <img
                     src={bietthu}
-                    className={`${isMobile ? 'w-[400px] h-[300px]' : 'w-[500px] h-[350px]'} border cursor-pointer`}
+                    className={`${isMobile ? 'w-[400px] h-[300px]' : 'w-[500px] h-[350px]'} cursor-pointer`}
                     loading="lazy"
                   />
                   {!isMobile && (
                     <div>
                       <img
                         src={bietthumot}
-                        className="w-[250px] h-[175px] border cursor-pointer"
+                        className="w-[250px] h-[175px] cursor-pointer"
                         loading="lazy"
                       />
                       <img
                         src={bietthumot}
-                        className="w-[250px] h-[175px] border cursor-pointer"
+                        className="w-[250px] h-[175px] cursor-pointer"
                         loading="lazy"
                       />
                     </div>
@@ -310,14 +308,11 @@ const App = () => {
           <div>
             <p className={`text-2xl font-bold pb-2 border-b-2 ${isMobile ? 'w-[150px]' : 'w-[200px]'} fall-animation`}>About Us?</p>
             <p className={`pt-10 ${isMobile ? 'text-[11px]' : 'text-md'}`}>
-              Hi render est un studio de rendu créatif fondé en 2017 par Sandrine Karlen et Wassim Honeiny. 
-              Architecte d’intérieur và Architecte. Aujourdhui chúng tôi đưa tất cả kỹ năng của mình 
-              vào việc hình dung kiến trúc cao cấp. 
+              TRT Studio is a Vietnam-based architectural visualization studio with over 5 years of experience in professional design and visualization.
             </p>
             <p className={`pt-4 ${isMobile ? 'text-[11px]' : 'text-md'}`}>
-              Hi render est un studio de rendu créatif fondé en 2017 par Sandrine Karlen et Wassim Honeiny. 
-              Architecte d’intérieur và Architecte. Aujourdhai chúng tôi đưa tất cả kỹ năng của mình 
-              vào việc hình dung kiến trúc cao cấp. 
+              We work with real estate agents and brands, property developers, architects and interior designers worldwide - to bring them high-quality 
+              photorealistic images, animations and interactive 360-degree panoramas, showcasing the unique features and vision for each project.
             </p>
           </div>
           <div className="flex justify-center">
@@ -341,13 +336,14 @@ const App = () => {
             {selectedImage && (
               <img
                 src={selectedImage}
-                className={isMobile ? 'w-[400px] h-[300px]' : 'w-[900px] h-[700px]'}
+                className={isMobile ? 'w-[400px] h-[300px]' : 'w-[1000px] h-[800px]'}
                 alt="Selected"
               />
             )}
             <div className="thumbnails">
               {thumbnails.map((thumb, index) => (
                 <img
+                  className={isMobile ? 'w-[80px] h-[60px]' : 'w-[140px] h-[100px]'}
                   key={index}
                   src={thumb}
                   alt={`Thumbnail ${index}`}
@@ -366,28 +362,35 @@ const App = () => {
             />
         </div>
         
-        <img
+        {/* <img
           className="cursor-pointer absolute top-2 right-2"
           src={deleteIcon}
           width={isMobile ? 30 : 50} 
           height={isMobile ? 30 : 50} 
           onClick={closeModal}
           alt="Close"
-        />
+        /> */}
       </div>
 
       <footer className="bg-black text-white py-10">
-        <div className="max-w-screen-2xl mx-auto flex justify-between items-center">
-          <div className="flex items-center">
-            <p className={`${isMobile ? 'text-[13px] font-bold' : 'text-xl font-bold'}`}>Trương Công Trình</p>
+        <div className="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center">
+          <div className="flex flex-col items-center md:items-start mb-8 md:mb-0">
+            <h2 className={`${isMobile ? 'text-[20px] font-bold' : 'text-4xl font-bold'}`}>TRT Studio</h2>
+            <p className="pt-5 pb-2 text-center md:text-left">"Your satisfaction is our success"</p>
+            <div className="flex items-center">
+              <Link className="italic bg-white text-xl p-2 text-black font-semibold" to={"https://www.fiverr.com/sellers/daniel_vie/edit"}>fi</Link>
+              <Link className="italic bg-white text-xl p-2 text-black font-semibold mx-2" to={"https://www.instagram.com/tctrinh_architect/"}>ins</Link>
+              <Link className="italic bg-white text-xl p-2 text-black font-semibold" to={"https://www.behance.net/trinhtruong11"}>be</Link>
+              <Link className="italic bg-white text-xl p-2 text-black font-semibold ml-2" to={"https://www.linkedin.com/in/lan-hong-b16b15135/"}>in</Link>
+            </div>
           </div>
-          <div className="text-center">
-            <p className={`${isMobile ? 'text-[13px] font-bold' : 'text-xl font-bold'}`}>Địa chỉ: 123 Đường ABC, Thành phố XYZ</p>
-            <p className="text-lg">Email: your-email@gmail.com</p>
+          <div className="text-center mb-8 md:mb-0">
+            <p className={`text-lg font-bold`}>Address: Da Nang, Vietnam.</p>
+            <p className="text-lg">WhatsApp: +84 935 304 384</p>
+            <p className="text-lg">Email: truongcongtrinh.arch@gmail.com</p>
           </div>
-          <div className="flex space-x-6">
-            <a href="https://www.behance.net/yourprofile" className="hover:underline">Behance</a>
-            <a href="https://www.facebook.com/yourprofile" className="hover:underline">Facebook</a>
+          <div className="flex justify-center md:justify-end space-x-6">
+            <img src={logo} width={150} height={150} alt="Logo" />
           </div>
         </div>
       </footer>
