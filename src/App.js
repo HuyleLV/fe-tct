@@ -28,10 +28,9 @@ const App = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleBack = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-      setSelectedImage(thumbnails[currentIndex - 1]);
-    }
+    const newIndex = Math.max(currentIndex - 1, 0); // Đảm bảo không nhỏ hơn 0
+    setCurrentIndex(newIndex);
+    setSelectedImage(thumbnails[newIndex]);
   };
 
   const handleNext = () => {
@@ -44,7 +43,7 @@ const App = () => {
   const handleImageClick = (image, thumbnailList) => {
     setSelectedImage(image);
     setThumbnails(thumbnailList);
-    setCurrentIndex(0); // Đặt lại chỉ số hiện tại
+    setCurrentIndex(0); // Reset current index
     setIsModalOpen(true);
   };
 
@@ -52,7 +51,7 @@ const App = () => {
     setIsModalOpen(false);
     setSelectedImage(null);
     setThumbnails([]);
-    setCurrentIndex(0); // Đặt lại chỉ số khi đóng modal
+    setCurrentIndex(0); // Reset index when closing modal
   };
 
   const handleThumbnailClick = (thumb, index) => {
@@ -71,6 +70,25 @@ const App = () => {
       ourRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'ArrowLeft') {
+      handleBack(); // Gọi hàm quay lại
+    } else if (e.key === 'ArrowRight') {
+      handleNext(); // Gọi hàm tiếp theo
+    } else if (e.key === 'Escape') {
+      closeModal(); // Gọi hàm tiếp theo
+    }
+  };
+
+  useEffect(() => {
+    if (isModalOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isModalOpen]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -116,11 +134,6 @@ const App = () => {
           .modal-content {
             position: relative;
             text-align: center;
-          }
-
-          .modal img {
-            max-width: 90%;
-            max-height: 80%;
           }
 
           .thumbnails {
@@ -176,28 +189,38 @@ const App = () => {
                 <div>
                   <div className="flex items-end">
                     <img src={logo} width={60} height={60} alt="logo"/>
-                    <p className="text-xl">T R T - Studio</p>
+                    <p className="text-xl ml-2">T R T - Studio</p>
                   </div>
-                  <h3 className={`text-[11px] pt-1`}>DESIGN & VISUALIZATION</h3>
+                  <h3 className={`text-[11px] pt-1 tracking-[3px]`}>DESIGN & VISUALIZATION</h3>
                 </div>
               )}
               <div className="flex items-center">
-                <h3 className={`${isMobile ? "text-[14px]" : "text-xl"} fall-animation pt-2 pr-5 cursor-pointer`} onClick={scrollToAbout}>About Us</h3>
+                <h3 className={`${isMobile ? "text-[14px]" : "text-xl"} fall-animation pr-5 cursor-pointer`} onClick={scrollToAbout}>About Us</h3>
                 <div
                   className="relative"
                   onMouseEnter={() => setShowOptions(true)}
                   onMouseLeave={() => setShowOptions(false)}
                 >
-                  <button className={`${isMobile ? "text-[14px]" : "text-xl"} bg-yellow-500 text-black p-2 rounded`}>
+                  <button className={`${isMobile ? "text-[14px]" : "text-xl"} bg-yellow-500 text-black p-2 rounded cursor-pointer`}>
                     Contact
                   </button>
                   {showOptions && (
-                    <div className="absolute top-10 right-0 bg-white text-black shadow-lg w-full rounded-b">
-                      <Link to="https://wa.me/0935304384" className="flex items-center justify-center p-2 font-semibold border-b border-gray-200">
+                    <div className="absolute top-10 right-[-9px] bg-white text-black shadow-lg w-[120px] rounded-lg">
+                      <Link 
+                        to="https://wa.me/0935304384" 
+                        className="flex items-center justify-center p-2 border-b border-gray-200" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                      >
                         <img src={whatapp} className="w-4 h-4 mr-2" alt="WhatsApp" />
                         WhatsApp
                       </Link>
-                      <Link to="mailto:truongcongtrinh.arch@gmail.com" className="flex items-center justify-center p-2 font-semibold border-b border-gray-200">
+                      <Link 
+                        to="mailto:truongcongtrinh.arch@gmail.com" 
+                        className="flex items-center justify-center p-2 border-b border-gray-200" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                      >
                         <img src={gmail} className="w-4 h-4 mr-2" alt="Gmail" />
                         Gmail
                       </Link>
@@ -209,14 +232,14 @@ const App = () => {
             </div>
           </div>
           <div className="px-[5%]">
-            <p className="font-bold text-6xl pt-[300px] fall-animation">
-              <span className="text-[40px] pb-4 italic">
-                We provide professional 3D visualization services,<br></br>
-                that showcase the true potential of your real estate,<br></br>
+            <p className="font-bold text-6xl pt-[480px] fall-animation">
+              <span className="text-[35px] pb-4 italic">
+                We provide professional 3D visualization services,<br />
+                that showcase the true potential of your real estate,<br />
                 ultimately driving sales success.
               </span>
             </p>
-            <img className="py-5" src={logo} width={150} height={150} alt="logo"/>
+            {/* <img className="py-5" src={logo} width={150} height={150} alt="logo"/> */}
           </div>
         </div>
 
@@ -269,7 +292,7 @@ const App = () => {
         </div>
       </div>
 
-      <div ref={ourRef} className="bg-slate-800 text-white">
+      <div ref={ourRef} className="bg-[#222525] text-white">
         <div className="max-w-screen-2xl mx-auto py-20">
           <div className={`${isMobile ? 'grid grid-cols-1 px-2' : 'grid grid-cols-2'} gap-4`}>
             {Array(6).fill().map((_, index) => (
@@ -277,26 +300,26 @@ const App = () => {
                 <div className="flex" onClick={() => handleImageClick(bietthu, [bietthumot, bietthu, bietthu])}>
                   <img
                     src={bietthu}
-                    className={`${isMobile ? 'w-[400px] h-[300px]' : 'w-[500px] h-[350px]'} cursor-pointer`}
+                    className={`${isMobile ? 'w-[400px] h-[300px]' : 'w-[500px] h-[350px]'} cursor-pointer rounded-l-xl`}
                     loading="lazy"
                   />
                   {!isMobile && (
                     <div>
                       <img
                         src={bietthumot}
-                        className="w-[250px] h-[175px] cursor-pointer"
+                        className="w-[250px] h-[175px] cursor-pointer rounded-tr-xl"
                         loading="lazy"
                       />
                       <img
                         src={bietthumot}
-                        className="w-[250px] h-[175px] cursor-pointer"
+                        className="w-[250px] h-[175px] cursor-pointer rounded-br-xl"
                         loading="lazy"
                       />
                     </div>
                   )}
                 </div>
-                <p className="pt-5 text-2xl font-semibold">Project: Biệt Thự Biệt Thự Biệt Thự</p>
-                <p className="pt-2 text-xl text-gray-400">Ha noi, Viet Nam</p>
+                <p className="pt-2 text-xl font-semibold">Project: Biệt Thự Biệt Thự Biệt Thự</p>
+                <p className="text-lg text-gray-400">Ha noi, Viet Nam</p>
               </div>
             ))}
           </div>
@@ -304,90 +327,78 @@ const App = () => {
       </div>
 
       <div ref={aboutRef} className="max-w-screen-2xl mx-auto px-2">
-        <div className="py-40 grid grid-cols-2 gap-4">
+        <div className="py-10 grid grid-cols-2 gap-4">
           <div>
             <p className={`text-2xl font-bold pb-2 border-b-2 ${isMobile ? 'w-[150px]' : 'w-[200px]'} fall-animation`}>About Us?</p>
-            <p className={`pt-10 ${isMobile ? 'text-[11px]' : 'text-md'}`}>
+            <p className={`pt-10 ${isMobile ? 'text-[11px]' : 'text-xl'}`}>
               TRT Studio is a Vietnam-based architectural visualization studio with over 5 years of experience in professional design and visualization.
             </p>
-            <p className={`pt-4 ${isMobile ? 'text-[11px]' : 'text-md'}`}>
+            <p className={`pt-4 ${isMobile ? 'text-[11px]' : 'text-xl'}`}>
               We work with real estate agents and brands, property developers, architects and interior designers worldwide - to bring them high-quality 
               photorealistic images, animations and interactive 360-degree panoramas, showcasing the unique features and vision for each project.
             </p>
           </div>
           <div className="flex justify-center">
-            <img src={people} className={`${isMobile ? 'w-2/3 h-[200px]' : 'w-2/3 h-[300px]'} rounded-xl`} loading="lazy" />
+            <img src={people} className={`${isMobile ? 'w-2/3 h-[200px]' : 'w-full h-[450px]'} rounded-xl`} loading="lazy" />
           </div>
         </div>
       </div>
 
       <div className={`modal ${isModalOpen ? "open" : ""}`} onClick={closeModal}>
         <div className="modal-content flex items-center justify-between" onClick={(e) => e.stopPropagation()}> 
-          <img
-            className={`text-black font-bold py-2 px-4 rounded ${currentIndex === 0 ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`} 
-            onClick={handleBack}
-            disabled={currentIndex === 0}
-            src={previous} 
-            width={isMobile ? 60 : 100} 
-            height={isMobile ? 60 : 100} 
-            />
-
-          <div className="flex flex-col items-center">
+        <img
+          className={`text-black font-bold py-2 px-4 rounded ${currentIndex === 0 ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`} 
+          onClick={handleBack}
+          disabled={currentIndex === 0}
+          src={previous} 
+          width={isMobile ? 60 : 60} 
+          height={isMobile ? 60 : 60} 
+        />
+          <div className="flex flex-col items-center m-50">
             {selectedImage && (
               <img
                 src={selectedImage}
-                className={isMobile ? 'w-[400px] h-[300px]' : 'w-[1000px] h-[800px]'}
+                className=""
                 alt="Selected"
               />
             )}
-            <div className="thumbnails">
-              {thumbnails.map((thumb, index) => (
-                <img
-                  className={isMobile ? 'w-[80px] h-[60px]' : 'w-[140px] h-[100px]'}
-                  key={index}
-                  src={thumb}
-                  alt={`Thumbnail ${index}`}
-                  onClick={() => handleThumbnailClick(thumb, index)}
-                />
-              ))}
-            </div>
           </div>
           <img
             className={`text-black font-bold py-2 px-4 rounded ${currentIndex === thumbnails.length - 1 ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`} 
             onClick={handleNext}
             disabled={currentIndex === thumbnails.length - 1}
             src={next} 
-            width={isMobile ? 60 : 100} 
-            height={isMobile ? 60 : 100} 
-            />
+            width={isMobile ? 60 : 60} 
+            height={isMobile ? 60 : 60} 
+          />
         </div>
         
-        {/* <img
+        <img
           className="cursor-pointer absolute top-2 right-2"
           src={deleteIcon}
-          width={isMobile ? 30 : 50} 
-          height={isMobile ? 30 : 50} 
+          width={isMobile ? 30 : 40} 
+          height={isMobile ? 30 : 40} 
           onClick={closeModal}
           alt="Close"
-        /> */}
+        />
       </div>
 
       <footer className="bg-black text-white py-10">
         <div className="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center">
           <div className="flex flex-col items-center md:items-start mb-8 md:mb-0">
-            <h2 className={`${isMobile ? 'text-[20px] font-bold' : 'text-4xl font-bold'}`}>TRT Studio</h2>
-            <p className="pt-5 pb-2 text-center md:text-left">"Your satisfaction is our success"</p>
-            <div className="flex items-center">
+            <h2 className={`${isMobile ? 'text-[20px] font-bold' : 'text-5xl font-bold pl-8'}`}>TRT Studio</h2>
+            <p className="pt-2 pb-2 text-center text-xl md:text-left">"Your satisfaction is our success"</p>
+            <div className="flex items-center pl-14">
               <Link className="italic bg-white text-xl p-2 text-black font-semibold" to={"https://www.fiverr.com/sellers/daniel_vie/edit"}>fi</Link>
               <Link className="italic bg-white text-xl p-2 text-black font-semibold mx-2" to={"https://www.instagram.com/tctrinh_architect/"}>ins</Link>
               <Link className="italic bg-white text-xl p-2 text-black font-semibold" to={"https://www.behance.net/trinhtruong11"}>be</Link>
               <Link className="italic bg-white text-xl p-2 text-black font-semibold ml-2" to={"https://www.linkedin.com/in/lan-hong-b16b15135/"}>in</Link>
             </div>
           </div>
-          <div className="text-center mb-8 md:mb-0">
-            <p className={`text-lg font-bold`}>Address: Da Nang, Vietnam.</p>
-            <p className="text-lg">WhatsApp: +84 935 304 384</p>
-            <p className="text-lg">Email: truongcongtrinh.arch@gmail.com</p>
+          <div className="text-center mb-8 md:mb-0 pt-12">
+            <p className={`text-xl font-bold`}>Address: Da Nang, Vietnam.</p>
+            <p className="text-xl">WhatsApp: +84 935 304 384</p>
+            <p className="text-xl">Email: truongcongtrinh.arch@gmail.com</p>
           </div>
           <div className="flex justify-center md:justify-end space-x-6">
             <img src={logo} width={150} height={150} alt="Logo" />
