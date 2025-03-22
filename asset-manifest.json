@@ -1,26 +1,23 @@
 {
   "files": {
     "main.css": "/fe-tct/static/css/main.238cd683.css",
-    "main.js": "/fe-tct/static/js/main.2c98bdef.js",
+    "main.js": "/fe-tct/static/js/main.c020ec31.js",
     "static/media/video-demo.mp4": "/fe-tct/static/media/video-demo.85ef6768ec7393715a87.mp4",
     "static/media/bietthu.jpg": "/fe-tct/static/media/bietthu.daa8d0f530f390b095af.jpg",
     "static/media/bietthumot.jpg": "/fe-tct/static/media/bietthumot.f0b0a153e56fbb577520.jpg",
     "static/media/people.jpg": "/fe-tct/static/media/people.97a4457cc58fbc1cc062.jpg",
-    "static/media/logo.png": "/fe-tct/static/media/logo.e06138697680886feaa3.png",
     "static/media/UTM AvoBold.ttf": "/fe-tct/static/media/UTM AvoBold.d14cc644e10f0404234c.ttf",
     "static/media/UTM Avo.ttf": "/fe-tct/static/media/UTM Avo.acd8c5d47db864e9bd0f.ttf",
+    "static/media/logo.png": "/fe-tct/static/media/logo.8d17a09cba0d472d3f68.png",
     "static/media/whatapp.png": "/fe-tct/static/media/whatapp.c664b8daf06be1bdf3b9.png",
     "static/media/staircase.png": "/fe-tct/static/media/staircase.686f347ec3da696444c8.png",
-    "static/media/deleteIcon.png": "/fe-tct/static/media/deleteIcon.acb4320717139484e61c.png",
-    "static/media/previous.png": "/fe-tct/static/media/previous.9d4c14ca237758e1f855.png",
-    "static/media/next.png": "/fe-tct/static/media/next.e6d5e112c87a2473b1ad.png",
     "static/media/cad.png": "/fe-tct/static/media/cad.46ce1ce238e5b2daf58d.png",
     "index.html": "/fe-tct/index.html",
     "main.238cd683.css.map": "/fe-tct/static/css/main.238cd683.css.map",
-    "main.2c98bdef.js.map": "/fe-tct/static/js/main.2c98bdef.js.map"
+    "main.c020ec31.js.map": "/fe-tct/static/js/main.c020ec31.js.map"
   },
   "entrypoints": [
     "static/css/main.238cd683.css",
-    "static/js/main.2c98bdef.js"
+    "static/js/main.c020ec31.js"
   ]
 }
