@@ -16,6 +16,10 @@ import next from "../src/asset/next.png";
 import previous from "../src/asset/previous.png";
 import { Link } from "react-router-dom";
 import { useDevice } from "../src/hooks";
+import instagram from "../src/asset/instagram.png";
+import behance from "../src/asset/behance.png";
+import linkedin from "../src/asset/linkedin.png";
+import fiverr from "../src/asset/fiver.png";
 
 const App = () => {
   const { isMobile } = useDevice();
@@ -43,7 +47,7 @@ const App = () => {
   const handleImageClick = (image, thumbnailList) => {
     setSelectedImage(image);
     setThumbnails(thumbnailList);
-    setCurrentIndex(0); // Reset current index
+    setCurrentIndex(0);
     setIsModalOpen(true);
   };
 
@@ -51,12 +55,7 @@ const App = () => {
     setIsModalOpen(false);
     setSelectedImage(null);
     setThumbnails([]);
-    setCurrentIndex(0); // Reset index when closing modal
-  };
-
-  const handleThumbnailClick = (thumb, index) => {
-    setSelectedImage(thumb);
-    setCurrentIndex(index);
+    setCurrentIndex(0); 
   };
 
   const scrollToAbout = () => {
@@ -108,11 +107,9 @@ const App = () => {
               opacity: 1;
             }
           }
-
           .fall-animation {
             animation: fall 1s ease forwards;
           }
-
           .modal {
             position: fixed;
             top: 0;
@@ -126,32 +123,26 @@ const App = () => {
             z-index: 1000;
             display: none;
           }
-
           .open {
             display: flex;
           }
-
           .modal-content {
             position: relative;
             text-align: center;
           }
-
           .thumbnails {
             display: flex;
             justify-content: center;
             margin-top: 10px;
           }
-
           .thumbnails img {
             cursor: pointer;
             margin: 0 5px;
             border: 2px solid transparent;
           }
-
           .thumbnails img:hover {
             border: 2px solid white;
           }
-
           .close-button {
             position: absolute;
             top: 10px;
@@ -183,7 +174,7 @@ const App = () => {
                     <img src={logo} width={40} height={40} alt="logo"/>
                     <p className="text-[12px]">T R T - Studio</p>
                   </div>
-                  <h3 className={`text-[10px] fall-animation pt-2`}>DESIGN & VISUALIZATION</h3>
+                  <h3 className={`text-[10px] fall-animation pt-2`}>DESIGN&VISUALIZATION</h3>
                 </div>
               ) : (
                 <div>
@@ -191,7 +182,7 @@ const App = () => {
                     <img src={logo} width={60} height={60} alt="logo"/>
                     <p className="text-xl ml-2">T R T - Studio</p>
                   </div>
-                  <h3 className={`text-[11px] pt-1 tracking-[3px]`}>DESIGN & VISUALIZATION</h3>
+                  <h3 className={`text-[11px] pt-1 tracking-[3px]`}>DESIGN&VISUALIZATION</h3>
                 </div>
               )}
               <div className="flex items-center">
@@ -201,27 +192,27 @@ const App = () => {
                   onMouseEnter={() => setShowOptions(true)}
                   onMouseLeave={() => setShowOptions(false)}
                 >
-                  <button className={`${isMobile ? "text-[14px]" : "text-xl"} bg-yellow-500 text-black p-2 rounded cursor-pointer`}>
+                  <button className={`${isMobile ? "text-[14px]" : "text-xl"} bg-yellow-500 text-black px-2 pt-1 pb-2 rounded cursor-pointer`}>
                     Contact
                   </button>
                   {showOptions && (
-                    <div className="absolute top-10 right-[-9px] bg-white text-black shadow-lg w-[120px] rounded-lg">
+                    <div className="absolute top-13 right-[-10px] bg-white text-black shadow-lg w-[120px] rounded-lg">
                       <Link 
                         to="https://wa.me/0935304384" 
                         className="flex items-center justify-center p-2 border-b border-gray-200" 
                         target="_blank" 
                         rel="noopener noreferrer"
                       >
-                        <img src={whatapp} className="w-4 h-4 mr-2" alt="WhatsApp" />
+                        <img src={whatapp} className="h-4 mr-2" alt="WhatsApp" />
                         WhatsApp
                       </Link>
                       <Link 
                         to="mailto:truongcongtrinh.arch@gmail.com" 
-                        className="flex items-center justify-center p-2 border-b border-gray-200" 
+                        className="flex items-center justify-center p-2" 
                         target="_blank" 
                         rel="noopener noreferrer"
                       >
-                        <img src={gmail} className="w-4 h-4 mr-2" alt="Gmail" />
+                        <img src={gmail} className="h-3 mr-2" alt="Gmail" />
                         Gmail
                       </Link>
                     </div>
@@ -232,8 +223,8 @@ const App = () => {
             </div>
           </div>
           <div className="px-[5%]">
-            <p className="font-bold text-6xl pt-[480px] fall-animation">
-              <span className="text-[35px] pb-4 italic">
+            <p className="font-bold text-6xl pt-[485px] fall-animation">
+              <span className="text-[30px] pb-4 italic">
                 We provide professional 3D visualization services,<br />
                 that showcase the true potential of your real estate,<br />
                 ultimately driving sales success.
@@ -286,7 +277,7 @@ const App = () => {
               </div>
             </div>
           </div>
-          <button className="text-xl bg-yellow-500 text-black p-2 rounded fall-animation mt-[180px] cursor-pointer" onClick={scrollToOur}>
+          <button className="text-xl bg-yellow-500 text-black px-2 pt-1 pb-2 rounded fall-animation mt-[180px] cursor-pointer" onClick={scrollToOur}>
             Our Achievements
           </button>
         </div>
@@ -328,8 +319,7 @@ const App = () => {
 
       <div ref={aboutRef} className="max-w-screen-2xl mx-auto px-2">
         <div className="py-10 grid grid-cols-2 gap-4">
-          <div>
-            <p className={`text-2xl font-bold pb-2 border-b-2 ${isMobile ? 'w-[150px]' : 'w-[200px]'} fall-animation`}>About Us?</p>
+          <div className={`${isMobile ? '' : 'ml-10 mr-5'}`}>
             <p className={`pt-10 ${isMobile ? 'text-[11px]' : 'text-xl'}`}>
               TRT Studio is a Vietnam-based architectural visualization studio with over 5 years of experience in professional design and visualization.
             </p>
@@ -339,7 +329,7 @@ const App = () => {
             </p>
           </div>
           <div className="flex justify-center">
-            <img src={people} className={`${isMobile ? 'w-2/3 h-[200px]' : 'w-full h-[450px]'} rounded-xl`} loading="lazy" />
+            <img src={people} className={`${isMobile ? 'w-2/3 h-[200px]' : 'w-full h-[450px] ml-5 mr-10'} rounded-xl`} loading="lazy" />
           </div>
         </div>
       </div>
@@ -387,13 +377,21 @@ const App = () => {
         <div className="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center">
           <div className="flex flex-col items-center md:items-start mb-8 md:mb-0">
             <h2 className={`${isMobile ? 'text-[20px] font-bold' : 'text-5xl font-bold pl-8'}`}>TRT Studio</h2>
-            <p className="pt-2 pb-2 text-center text-xl md:text-left">"Your satisfaction is our success"</p>
+            <p className="pt-1 pb-2 text-center text-xl md:text-left">"Your satisfaction is our success"</p>
             <div className="flex items-center pl-14">
-              <Link className="italic bg-white text-xl p-2 text-black font-semibold" to={"https://www.fiverr.com/sellers/daniel_vie/edit"}>fi</Link>
-              <Link className="italic bg-white text-xl p-2 text-black font-semibold mx-2" to={"https://www.instagram.com/tctrinh_architect/"}>ins</Link>
-              <Link className="italic bg-white text-xl p-2 text-black font-semibold" to={"https://www.behance.net/trinhtruong11"}>be</Link>
-              <Link className="italic bg-white text-xl p-2 text-black font-semibold ml-2" to={"https://www.linkedin.com/in/lan-hong-b16b15135/"}>in</Link>
-            </div>
+              <a className="rounded-full" href="https://www.fiverr.com/sellers/daniel_vie/edit" target="_blank" rel="noopener noreferrer">
+                  <img src={fiverr} alt="Fiverr" className="h-8 mx-2" />
+              </a>
+              <a href="https://www.instagram.com/tctrinh_architect/" target="_blank" rel="noopener noreferrer">
+                  <img src={instagram} alt="Instagram" className="h-8 mx-2" />
+              </a>
+              <a href="https://www.behance.net/trinhtruong11" target="_blank" rel="noopener noreferrer">
+                  <img src={behance} alt="Behance" className="h-8 mx-2" />
+              </a>
+              <a href="https://www.linkedin.com/in/lan-hong-b16b15135/" target="_blank" rel="noopener noreferrer">
+                  <img src={linkedin} alt="LinkedIn" className="h-8 mx-2" />
+              </a>
+          </div>
           </div>
           <div className="text-center mb-8 md:mb-0 pt-12">
             <p className={`text-xl font-bold`}>Address: Da Nang, Vietnam.</p>
