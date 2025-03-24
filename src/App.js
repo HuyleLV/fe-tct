@@ -228,8 +228,8 @@ const App = () => {
             </div>
           </div>
           <div className="px-[5%]">
-            <p className="font-bold text-6xl pt-[485px] fall-animation">
-              <span className="text-[30px] pb-4 italic">
+            <p className={`${isMobile ? "pt-[320px]" : "pt-[485px]"} font-bold text-6xl fall-animation`}>
+              <span className={` ${isMobile ? "text-[25px]" : "text-[30px] pb-4"} italic`}>
                 We provide professional 3D visualization services,<br />
                 that showcase the true potential of your real estate,<br />
                 ultimately driving sales success.
@@ -383,7 +383,7 @@ const App = () => {
           <div className="flex flex-col items-center md:items-start mb-8 md:mb-0">
             <h2 className={`${isMobile ? 'text-[20px] font-bold' : 'text-5xl font-bold pl-8'}`}>TRT Studio</h2>
             <p className="pt-1 pb-2 text-center text-xl md:text-left">"Your satisfaction is our success"</p>
-            <div className="flex items-center pl-14">
+            <div className={`${isMobile ? "" : "pl-14"} flex items-center`}>
               <a className="rounded-full" href="https://www.fiverr.com/sellers/daniel_vie/edit" target="_blank" rel="noopener noreferrer">
                   <img src={fiverr} alt="Fiverr" className="h-8 mx-2" />
               </a>
