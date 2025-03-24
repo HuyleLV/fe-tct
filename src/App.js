@@ -190,26 +190,31 @@ const App = () => {
                 <div
                   className="relative"
                   onMouseEnter={() => setShowOptions(true)}
-                  onMouseLeave={() => setShowOptions(false)}
                 >
-                  <button className={`${isMobile ? "text-[14px]" : "text-xl"} bg-yellow-500 text-black px-2 pt-1 pb-2 rounded cursor-pointer`}>
+                  <button
+                    className={`${isMobile ? "text-[14px]" : "text-xl"} bg-yellow-500 text-black px-2 pt-1 pb-2 rounded cursor-pointer`}
+                  >
                     Contact
                   </button>
                   {showOptions && (
-                    <div className="absolute top-13 right-[-10px] bg-white text-black shadow-lg w-[120px] rounded-lg">
-                      <Link 
-                        to="https://wa.me/0935304384" 
-                        className="flex items-center justify-center p-2 border-b border-gray-200" 
-                        target="_blank" 
+                    <div
+                      className="absolute top-13 right-[-10px] bg-white text-black shadow-lg w-[120px] rounded-lg"
+                      onMouseEnter={() => setShowOptions(true)}
+                      onMouseLeave={() => setShowOptions(false)}
+                    >
+                      <Link
+                        to="https://wa.me/0935304384"
+                        className="flex items-center justify-center p-2 border-b border-gray-200"
+                        target="_blank"
                         rel="noopener noreferrer"
                       >
                         <img src={whatapp} className="h-4 mr-2" alt="WhatsApp" />
                         WhatsApp
                       </Link>
-                      <Link 
-                        to="mailto:truongcongtrinh.arch@gmail.com" 
-                        className="flex items-center justify-center p-2" 
-                        target="_blank" 
+                      <Link
+                        to="mailto:truongcongtrinh.arch@gmail.com"
+                        className="flex items-center justify-center p-2"
+                        target="_blank"
                         rel="noopener noreferrer"
                       >
                         <img src={gmail} className="h-3 mr-2" alt="Gmail" />
