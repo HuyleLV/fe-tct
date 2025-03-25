@@ -382,7 +382,7 @@ const App = () => {
         <div className="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center">
           <div className="flex flex-col items-center md:items-start mb-8 md:mb-0">
             <h2 className={`${isMobile ? 'text-[20px] font-bold' : 'text-5xl font-bold pl-8'}`}>TRT Studio</h2>
-            <p className="pt-1 pb-2 text-center text-xl md:text-left">"Your satisfaction is our success"</p>
+            <p className="pt-1 pb-2 text-center text-xl md:text-left italic">"Your satisfaction is our success"</p>
             <div className={`${isMobile ? "" : "pl-14"} flex items-center`}>
               <a className="rounded-full" href="https://www.fiverr.com/sellers/daniel_vie/edit" target="_blank" rel="noopener noreferrer">
                   <img src={fiverr} alt="Fiverr" className="h-8 mx-2" />
