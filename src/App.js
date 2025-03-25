@@ -186,7 +186,7 @@ const App = () => {
                 </div>
               )}
               <div className="flex items-center">
-                <h3 className={`${isMobile ? "text-[14px]" : "text-xl"} fall-animation pr-5 cursor-pointer`} onClick={scrollToAbout}>About Us</h3>
+                <h3 className={`${isMobile ? "text-[14px]" : "text-xl"} fall-animation pr-5 pb-1 cursor-pointer`} onClick={scrollToAbout}>About Us</h3>
                 <div
                   className="relative"
                   onMouseEnter={() => setShowOptions(true)}
@@ -229,7 +229,7 @@ const App = () => {
           </div>
           <div className="px-[5%]">
             <p className={`${isMobile ? "pt-[320px]" : "pt-[485px]"} font-bold text-6xl fall-animation`}>
-              <span className={` ${isMobile ? "text-[25px]" : "text-[30px] pb-4"} italic`}>
+              <span className={` ${isMobile ? "text-[25px]" : "text-xl pb-4"} italic`}>
                 We provide professional 3D visualization services,<br />
                 that showcase the true potential of your real estate,<br />
                 ultimately driving sales success.
@@ -371,8 +371,8 @@ const App = () => {
         <img
           className="cursor-pointer absolute top-2 right-2"
           src={deleteIcon}
-          width={isMobile ? 30 : 40} 
-          height={isMobile ? 30 : 40} 
+          width={isMobile ? 30 : 30} 
+          height={isMobile ? 30 : 30} 
           onClick={closeModal}
           alt="Close"
         />
@@ -398,7 +398,7 @@ const App = () => {
               </a>
           </div>
           </div>
-          <div className="text-center mb-8 md:mb-0 pt-12">
+          <div className="text-center mb-8 md:mb-0 pt-14">
             <p className={`text-xl font-bold`}>Address: Da Nang, Vietnam.</p>
             <p className="text-xl">WhatsApp: +84 935 304 384</p>
             <p className="text-xl">Email: truongcongtrinh.arch@gmail.com</p>
